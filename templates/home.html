@@ -1,0 +1,257 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <title>Спартак</title>
+</head>
+<body>
+    <!-- Header Starts -->
+    <header class="header">
+        <div class="header__left">
+            <img src="{% static "img/logo.png" %}" alt="logo">
+        </div>
+
+        <div class="header__middle">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+            <input type="text" placeholder="Поиск по цифровым профилям">
+        </div>
+
+        <div class="header__right">
+
+            <!-- profile icon -->
+            <span class="material-symbols-outlined">
+                account_circle
+            </span>
+        </div>
+    </header>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+
+    <div class="main__body">
+
+        <!-- Sidebar Starts -->
+
+        <div class="sidebar">
+            <button class="sidebar__compose">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+                Добавить
+            </button>
+
+            <div class="sidebarOption sidebarOption__active">
+                <span class="material-symbols-outlined">
+                    list_alt
+                </span>
+                <h3>Список спортсменов</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
+                <h3>Изменить данные о спортсмене</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    document_scanner
+                </span>
+                <h3>Создать цифровой профиль</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    insert_chart
+                </span>
+                <h3>Сравнить данные</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    lunch_dining
+                </span>
+                <h3>Сравнить системы питания</h3>
+            </div>
+        </div>
+
+        <!-- Sidebar Ends -->
+
+        <!-- Email List Starts -->
+        <div class="emailList">
+            <div class="emailList_list">
+                <div class="emailRow emailRow__top">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+                <div class="emailRow">
+                    <div class="emailRow__options">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        <span class="material-symbols-outlined">
+                            document_scanner
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                    <h3 class="emailRow__title">Кряжев Артур Андреевич</h3>
+                    <h4 class="emailRow__birthday">05.02.2003</h4>
+                    <h4 class="emailRow__telNumber">+79999999999</h4>
+                    <div class="emailRow__time">19 нояб.</div>
+                </div>
+            </div>
+        </div>
+        <!-- Email List Ends -->
+
+    </div>
+
+    <!-- Main Body Ends -->
+    
+</body>
+</html>
