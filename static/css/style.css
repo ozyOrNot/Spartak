@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 /* =================================HEADER======================================= */
 
 .header__left img{
@@ -50,7 +54,6 @@
 .header__right span{
     cursor: pointer;
 }
-
 
 /* =========================================SIDEBAR=================================================== */
 
@@ -155,8 +158,20 @@ body{
     align-items: center;
 }
 
+/* =================material-symbols-outlined================== */
+
+.emailRow .material-symbols-outlined{
+    color: grey;
+}
+
+.emailRow__options span:hover{
+    color:#71AAFF;
+}
+
+/* ==================material-symbols-outlined==================== */
+
 .emailRow__options .material-symbols-outlined{
-    margin: 5px;
+    margin: 7px;
 }
 
 .emailRow{

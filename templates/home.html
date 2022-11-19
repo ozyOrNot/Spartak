@@ -28,11 +28,17 @@
         </div>
 
         <div class="header__right">
-
+            <a href="{% url 'logout' %}">
+                <button class="sidebar__compose logout__button">
+                    Выйти
+                </button>
+            </a>
             <!-- profile icon -->
-            <span class="material-symbols-outlined">
-                account_circle
-            </span>
+            <!-- <a href="{% url 'login_page' %}">
+                <span class="material-symbols-outlined">
+                    account_circle
+                </span>
+            </a> -->
         </div>
     </header>
     <!-- Header Ends -->
@@ -94,13 +100,13 @@
             <div class="emailList_list">
                 <div class="emailRow emailRow__top">
                     <div class="emailRow__options">
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined material-symbols-outlined__delete">
                             delete
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined material-symbols-outlined__document">
                             document_scanner
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined material-symbols-outlined__edit">
                             edit
                         </span>
                     </div>
