@@ -1,1 +1,1 @@
-web gunicorn spartak.wsgi:application --log-file -
+web gunicorn spartak.wsgi --log-file -
