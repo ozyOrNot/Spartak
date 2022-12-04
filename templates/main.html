@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_profile.css' %}">
+
+    <title>Спартак</title>
+</head>
+<body>
+    <!-- Header Starts -->
+    <header class="header">
+        <div class="header__left">
+            
+        </div>
+
+        <div class="header__middle">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+            <form action="{% url 'home' %}" method="GET">
+                <input type="text" placeholder="Поиск по цифровым профилям" name="q">
+            </form>
+        </div>
+
+        <div class="header__right">
+            <a href="{% url 'logout' %}">
+                <button class="sidebar__compose logout__button">
+                    Выйти
+                </button>
+            </a>
+        </div>
+    </header>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+
+    <div class="main__body">
+
+        <!-- Sidebar Starts -->
+
+        <div class="sidebar">
+            <a href="#create_popup" class="popup-link">
+                <div class="sidebar__compose">
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+                    Добавить
+                </div>
+            </a>
+
+            <a href="{% url 'home' %}">
+                <div class="sidebarOption sidebarOption__active">
+                    <span class="material-symbols-outlined">
+                        list_alt
+                    </span>
+                    <h3>Список спортсменов</h3>
+                </div>
+            </a>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
+                <h3>Изменить данные о спортсмене</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    document_scanner
+                </span>
+                <h3>Создать цифровой профиль</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    insert_chart
+                </span>
+                <h3>Сравнить данные</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    lunch_dining
+                </span>
+                <h3>Сравнить системы питания</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+                <h3>Корзина</h3>
+            </div>
+            
+        </div>
+
+        <!-- Sidebar Ends -->
+
+        {% block content %}
+        
+        {% endblock content %}
+
+    </div>
+
+    <!-- Main Body Ends -->
+
+    <!-- Pop-up Create a digital profile Starts -->
+    <div class="popup" id="create_popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="/" class="popup__close close-popup">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </a>
+                <div class="popup__title">Добавить спортсмена</div>
+                    <div class="form">
+                        <form action="/" method="POST">
+                            {% csrf_token %}
+                            <div class="input_field">
+                                {{sportman_form.name}}
+                            </div>
+
+                            <div class="input_field">
+                                {{sportman_form.second_name}}
+                            </div>
+
+                            <div class="input_field">
+                                {{sportman_form.parent_name}}
+                            </div>
+
+                            <div class="input_field">
+                                {{sportman_form.birthday}}
+                            </div>
+                            
+                            <div class="input_field">
+                                {{sportman_form.phone_number}}
+                            </div>
+                            
+                            <div class="input_field">
+                                {{sportman_form.passport}}
+                            </div>
+                            
+                            <div class="input_field button">
+                                <input type="submit" value="Добавить">
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pop-up Create a digital profile Ends -->
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'main_not_form.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="sportmanList profileBody">
+    <!-- Контент профиля -->
+    <div class="profile__content">
+        {% block profile_content %}
+        
+        {% endblock profile_content %}
+    </div>
+
+    <!-- Sidebar профиля -->
+    <div class="profile__sidebar">
+        <a href="#">
+            <div class="profile__sidebarOption profile__sidebarOption_active">
+                <h3>Общая информация</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Антропометрия</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Медицинские показатели</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Нормативы</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>История соревнований</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Система питания</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Травмы</h3>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

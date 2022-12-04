@@ -53,9 +53,33 @@ def login_page(request):
             login(request, user)
             return redirect('home')
 
-    context = {}
-    return render(request, 'login_page.html', context)
+    return render(request, 'login_page.html')
 
 def logoutUser(request):
     logout(request)
     return redirect('login_page')
+
+def sportmanProfile(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    sportman_form = SportsmanForm(instance=sportman)
+
+    # Изменение общей информации о спортсмене
+    if request.method == 'POST':
+        sportman.name = request.POST.get("name")
+        sportman.second_name = request.POST.get("second_name")
+        sportman.parent_name = request.POST.get("parent_name")
+        sportman.birthday = request.POST.get("birthday")
+        sportman.phone_number = request.POST.get("phone_number")
+        sportman.address = request.POST.get("address")
+        sportman.passport = request.POST.get("passport")
+        sportman.save()
+        return redirect('sportman-profile', str(sportman.id))
+
+    context = {'sportman':sportman, 'sportman_form':sportman_form}
+    return render(request, 'profile.html', context)
+
+def sportmanAnthropometry(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    context = {'sportman':sportman}
+    return render(request, 'profile-anthropometry.html', context)
+    

@@ -1,212 +1,44 @@
+{% extends 'main.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block content %}
+<!-- Sportmans List Starts -->
+<div class="sportmanList">
+    <div class="sportmanList_list">
 
-    <!-- Google Font Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
-
-    <title>Спартак</title>
-</head>
-<body>
-    <!-- Header Starts -->
-    <header class="header">
-        <div class="header__left">
-            
-        </div>
-
-        <div class="header__middle">
-            <span class="material-symbols-outlined">
-                search
-            </span>
-            <form action="{% url 'home' %}" method="GET">
-                <input type="text" placeholder="Поиск по цифровым профилям" name="q">
-            </form>
-        </div>
-
-        <div class="header__right">
-            <a href="{% url 'logout' %}">
-                <button class="sidebar__compose logout__button">
-                    Выйти
-                </button>
-            </a>
-            <!-- profile icon -->
-            <!-- <a href="{% url 'login_page' %}">
-                <span class="material-symbols-outlined">
-                    account_circle
-                </span>
-            </a> -->
-        </div>
-    </header>
-    <!-- Header Ends -->
-
-    <!-- Main Body Starts -->
-
-    <div class="main__body">
-
-        <!-- Sidebar Starts -->
-
-        <div class="sidebar">
-            <a href="#create_popup" class="popup-link">
-                <div class="sidebar__compose">
-                    <span class="material-symbols-outlined">
-                        add
-                    </span>
-                    Добавить
-                </div>
-            </a>
-
-            <a href="{% url 'home' %}">
-                <div class="sidebarOption sidebarOption__active">
-                    <span class="material-symbols-outlined">
-                        list_alt
-                    </span>
-                    <h3>Список спортсменов</h3>
-                </div>
-            </a>
-
-            <div class="sidebarOption">
-                <span class="material-symbols-outlined">
-                    edit
-                </span>
-                <h3>Изменить данные о спортсмене</h3>
-            </div>
-
-            <div class="sidebarOption">
-                <span class="material-symbols-outlined">
-                    document_scanner
-                </span>
-                <h3>Создать цифровой профиль</h3>
-            </div>
-
-            <div class="sidebarOption">
-                <span class="material-symbols-outlined">
-                    insert_chart
-                </span>
-                <h3>Сравнить данные</h3>
-            </div>
-
-            <div class="sidebarOption">
-                <span class="material-symbols-outlined">
-                    lunch_dining
-                </span>
-                <h3>Сравнить системы питания</h3>
-            </div>
-        </div>
-
-        <!-- Sidebar Ends -->
-
-        <!-- Email List Starts -->
-        <div class="sportmanList">
-            <div class="sportmanList_list">
-                
-                {% for sportman in sportmans %}
-                <a href="#">
-                    <div class="sportmanRow">
-                        <div class="sportmanRow__left">
-                            <div class="sportmanRow__options">
-                                <a href="{% url 'delete_profile' sportman.id %}">
-                                    <span class="material-symbols-outlined material-symbols-outlined__delete">
-                                        delete
-                                    </span>
-                                </a>
-                                <span class="material-symbols-outlined material-symbols-outlined__document">
-                                    document_scanner
-                                </span>
-                                <span class="material-symbols-outlined material-symbols-outlined__edit">
-                                    edit
-                                </span>
-                            </div>
-                            <h3 class="sportmanRow__title">{{sportman.second_name}} {{sportman.name}} {{sportman.parent_name}}</h3>
-                        </div>
-                        
-                        <div class="sportmanRow__right">
-                            <h4 class="sportmanRow__birthday">{{sportman.birthday|date:'d.m.Y'}}</h4>
-                            <h4 class="sportmanRow__telNumber">{{sportman.phone_number}}</h4>
-                            <div class="sportmanRow__time">{{sportman.created|date:'d.m.Y H:i'}}</div>
-                        </div>
+        {% for sportman in sportmans %}
+            <div class="sportmanRow">
+                <div class="sportmanRow__left">
+                    <div class="sportmanRow__options">
+                        <a href="{% url 'delete_profile' sportman.id %}">
+                            <span class="material-symbols-outlined material-symbols-outlined__delete">
+                                delete
+                            </span>
+                        </a>
+                        <span class="material-symbols-outlined material-symbols-outlined__document">
+                            document_scanner
+                        </span>
+                        <a href="{% url 'edit-profile' sportman.id %}">
+                            <span class="material-symbols-outlined material-symbols-outlined__edit">
+                                edit
+                            </span>
+                        </a>
                     </div>
-                </a>
-                {% endfor %}
+                    <a href="{% url 'sportman-profile' sportman.id %}">
+                        <h3 class="sportmanRow__title">{{sportman.second_name}} {{sportman.name}} {{sportman.parent_name}}</h3>
+                    </a>
+                </div>
                 
-            </div>
-        </div>
-        <!-- Email List Ends -->
-
-    </div>
-
-    <!-- Main Body Ends -->
-
-    <!-- Pop-up Create a digital profile Starts -->
-    <div class="popup" id="create_popup">
-        <div class="popup__body">
-            <div class="popup__content">
-                <a href="/" class="popup__close close-popup">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </a>
-                <div class="popup__title">Добавить спортсмена</div>
-                    <div class="form">
-                        <form action="/" method="POST">
-                            {% csrf_token %}
-                            <div class="input_field">
-                                {{sportman_form.name}}
-                            </div>
-
-                            <div class="input_field">
-                                {{sportman_form.second_name}}
-                            </div>
-
-                            <div class="input_field">
-                                {{sportman_form.parent_name}}
-                            </div>
-
-                            <div class="input_field">
-                                {{sportman_form.birthday}}
-                            </div>
-                            
-                            <div class="input_field">
-                                {{sportman_form.phone_number}}
-                            </div>
-                            
-                            <div class="input_field">
-                                {{sportman_form.passport}}
-                            </div>
-                            
-                            <div class="input_field button">
-                                <input type="submit" value="Добавить">
-                            </div>
-                    </form>
+                <div class="sportmanRow__right">
+                    <h4 class="sportmanRow__birthday">{{sportman.birthday|date:'d.m.Y'}}</h4>
+                    <h4 class="sportmanRow__telNumber">{{sportman.phone_number}}</h4>
+                    <h4 class="sportmanRow__id">{{sportman.id}}</h4>
+                    <div class="sportmanRow__time">{{sportman.created|date:'d.m.Y H:i'}}</div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
+        
     </div>
-    <!-- Pop-up Create a digital profile Ends -->
-
-    <!-- Pop-up Delete a digital profile Starts -->
-
-    <!-- <div class="popup" id="delete_popup">
-        <div class="popup__body">
-            <div class="popup__content">
-                <a href="/" class="popup__close close-popup">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </a>
-                <div class="popup__title">Удалить цифровой профиль?</div>
-                <form action="\"></form>
-            </div>
-        </div>
-    </div>    -->
-
-    <!-- Pop-up Delete a digital profile Ends -->
-
-    <script src="{% static 'js/create_popup.js' %}"></script>
-</body>
-</html>
+</div>
+<!-- Sportmans List Ends -->
+{% endblock content %}

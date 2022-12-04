@@ -13,5 +13,6 @@ class SportsmanForm(ModelForm):
             'parent_name': TextInput(attrs={'placeholder': 'Отчество'}),
             'birthday': TextInput(attrs={'placeholder': 'Дата рождения'}),
             'phone_number': TextInput(attrs={'placeholder': 'Номер телефона'}),
+            'address': TextInput(attrs={'placeholder': 'Адрес'}),
             'passport': TextInput(attrs={'placeholder': 'Серия и номер паспорта'})
         }

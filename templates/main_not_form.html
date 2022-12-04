@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_profile.css' %}">
+
+    <title>Спартак</title>
+</head>
+<body>
+    <!-- Header Starts -->
+    <header class="header">
+        <div class="header__left">
+            
+        </div>
+
+        <div class="header__middle">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+            <form action="{% url 'home' %}" method="GET">
+                <input type="text" placeholder="Поиск по цифровым профилям" name="q">
+            </form>
+        </div>
+
+        <div class="header__right">
+            <a href="{% url 'logout' %}">
+                <button class="sidebar__compose logout__button">
+                    Выйти
+                </button>
+            </a>
+        </div>
+    </header>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+
+    <div class="main__body">
+
+        <!-- Sidebar Starts -->
+
+        <div class="sidebar">
+
+            <a href="{% url 'home' %}">
+                <div class="sidebarOption sidebarOption__active">
+                    <span class="material-symbols-outlined">
+                        list_alt
+                    </span>
+                    <h3>Список спортсменов</h3>
+                </div>
+            </a>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
+                <h3>Изменить данные о спортсмене</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    document_scanner
+                </span>
+                <h3>Создать цифровой профиль</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    insert_chart
+                </span>
+                <h3>Сравнить данные</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    lunch_dining
+                </span>
+                <h3>Сравнить системы питания</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+                <h3>Корзина</h3>
+            </div>
+            
+        </div>
+
+        <!-- Sidebar Ends -->
+
+        {% block content %}
+        
+        {% endblock content %}
+
+    </div>
+
+    <!-- Main Body Ends -->
+</body>
+</html>

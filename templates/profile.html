@@ -1,0 +1,79 @@
+{% extends 'main_profile.html' %}
+{% load static %}
+
+{% block profile_content %}
+
+<div class="profile__inf">
+    <div class="profile__inf__title">
+        <h3 class="profile__id">id: {{sportman.id}}</h3>
+        <h3 class="profile__title">Цифровой профиль: Общая информация</h3>
+    </div>
+    <div class="profile_inf__content">
+        <div class="profile__form">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form__input">
+                    <label class="label_field">Имя:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.name}}
+                    </div>
+                </div>
+
+                <div class="form__input">
+                    <label class="label_field">Фамилия:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.second_name}}
+                    </div>
+                </div>
+
+                <div class="form__input">
+                    <label class="label_field">Отчество:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.parent_name}}
+                    </div>
+                </div>
+
+                <div class="form__input">
+                    <label class="label_field">Дата рождения:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.birthday}}
+                    </div>
+                </div>
+                
+                <div class="form__input">
+                    <label class="label_field">Номер телефона:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.phone_number}}
+                    </div>
+                </div>
+
+                <div class="form__input">
+                    <label class="label_field">Адрес:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.address}}
+                    </div>
+                </div>
+                
+                <div class="form__input">
+                    <label class="label_field">Паспорт:</label>
+                    <div class="profile_input_field">
+                        {{sportman_form.passport}}
+                    </div>
+                </div>
+                
+                <div class="input_field button_profile">
+                    <input type="submit" value="Сохранить">
+                </div>
+            </form>
+        </div>
+        <div class="profile__photo">
+            {% if sportman.photo.url != 'Null'%}
+                <img src='{{MEDIA_URL}}{{sportman.photo.url}}' alt="">
+            {% else %}
+                <img src="/media/sportmen-images/no-photo.png" alt="">
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock profile_content %}

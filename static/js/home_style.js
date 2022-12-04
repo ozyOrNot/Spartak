@@ -1,1 +1,0 @@
-const sidebarOptions = document.getElementsByClassName()
