@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from django.contrib.auth.models import User
-from .models import Sportsman
+from .models import Sportsman, Anthropometry, Competitions
 
-from .forms import SportsmanForm
+from .forms import SportsmanForm, AnthropometryForm, CompetitionsForm
 
 @login_required(login_url='login_page')
 def home_page(request):
@@ -72,6 +72,7 @@ def sportmanProfile(request, pk):
         sportman.phone_number = request.POST.get("phone_number")
         sportman.address = request.POST.get("address")
         sportman.passport = request.POST.get("passport")
+        sportman.photo = request.FILES.get("photo")
         sportman.save()
         return redirect('sportman-profile', str(sportman.id))
 
@@ -80,6 +81,31 @@ def sportmanProfile(request, pk):
 
 def sportmanAnthropometry(request, pk):
     sportman = Sportsman.objects.get(id=pk)
-    context = {'sportman':sportman}
+    anthropometries = Anthropometry.objects.filter(sportman=sportman)
+
+    anthropometry_form = AnthropometryForm()
+    if request.method == 'POST':
+        anthropometry_form = AnthropometryForm(request.POST)
+        if anthropometry_form.is_valid():
+            commit_form = anthropometry_form.save(commit=False)
+            commit_form.sportman = sportman
+            commit_form.save()
+
+    context = {'sportman':sportman, 'anthropometries':anthropometries, 'anthropometry_form':anthropometry_form}
     return render(request, 'profile-anthropometry.html', context)
-    
+
+def sportmanCompetitions(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    competitions = Competitions.objects.filter(sportman=sportman)
+
+    competition_form = CompetitionsForm()
+    if request.method == 'POST':
+        competition_form = CompetitionsForm(request.POST)
+        if competition_form.is_valid():
+            form = competition_form.save(commit=False)
+            form.sportman = sportman
+            form.save()
+            return redirect('sportman-competitions', str(sportman.id))
+
+    context = {'sportman':sportman, 'competitions':competitions, 'competition_form':competition_form}
+    return render(request, 'profile_competition.html', context)

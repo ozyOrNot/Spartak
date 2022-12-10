@@ -1,79 +1,136 @@
 {% extends 'main_profile.html' %}
 {% load static %}
 
-{% block profile_content %}
+{% block content %}
 
-<div class="profile__inf">
-    <div class="profile__inf__title">
-        <h3 class="profile__id">id: {{sportman.id}}</h3>
-        <h3 class="profile__title">Цифровой профиль: Общая информация</h3>
+<div class="sportmanList profileBody">
+    <!-- Контент профиля -->
+    <div class="profile__content">
+        <div class="profile__inf">
+            <div class="profile__inf__title">
+                <h3 class="profile__id">id: {{sportman.id}}</h3>
+                <h3 class="profile__title">Цифровой профиль: Общая информация</h3>
+            </div>
+            <div class="profile_inf__content">
+                <div class="profile__form">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form__input">
+                            <label class="label_field">Имя:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.name}}
+                            </div>
+                        </div>
+        
+                        <div class="form__input">
+                            <label class="label_field">Фамилия:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.second_name}}
+                            </div>
+                        </div>
+        
+                        <div class="form__input">
+                            <label class="label_field">Отчество:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.parent_name}}
+                            </div>
+                        </div>
+        
+                        <div class="form__input">
+                            <label class="label_field">Дата рождения:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.birthday}}
+                            </div>
+                        </div>
+                        
+                        <div class="form__input">
+                            <label class="label_field">Номер телефона:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.phone_number}}
+                            </div>
+                        </div>
+        
+                        <div class="form__input">
+                            <label class="label_field">Адрес:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.address}}
+                            </div>
+                        </div>
+                        
+                        <div class="form__input">
+                            <label class="label_field">Паспорт:</label>
+                            <div class="profile_input_field">
+                                {{sportman_form.passport}}
+                            </div>
+                        </div>
+                        
+                        <div class="form__input">
+                            <label class="label_field">Фото:</label>
+                            <div class="profile_input_field">
+                                <input id="id_photo" type="file" accept="image/*" name="photo">
+                            </div>
+                        </div>
+                    
+                        <div class="input_field button_profile">
+                            <input type="submit" value="Сохранить">
+                        </div>
+                    </form>
+                </div>
+                <div class="profile__photo">
+                    {% if sportman.photo.url != 'Null'%}
+                        <img src='{{MEDIA_URL}}{{sportman.photo.url}}' alt="">
+                    {% else %}
+                        <img src="/media/sportmen-images/no-photo.png" alt="">
+                    {% endif %}
+                    <div class="photo__edit">
+                        <div class="photo__delete">
+                            Удалить
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="profile_inf__content">
-        <div class="profile__form">
-            <form action="" method="POST">
-                {% csrf_token %}
-                <div class="form__input">
-                    <label class="label_field">Имя:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.name}}
-                    </div>
-                </div>
 
-                <div class="form__input">
-                    <label class="label_field">Фамилия:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.second_name}}
-                    </div>
-                </div>
-
-                <div class="form__input">
-                    <label class="label_field">Отчество:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.parent_name}}
-                    </div>
-                </div>
-
-                <div class="form__input">
-                    <label class="label_field">Дата рождения:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.birthday}}
-                    </div>
-                </div>
-                
-                <div class="form__input">
-                    <label class="label_field">Номер телефона:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.phone_number}}
-                    </div>
-                </div>
-
-                <div class="form__input">
-                    <label class="label_field">Адрес:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.address}}
-                    </div>
-                </div>
-                
-                <div class="form__input">
-                    <label class="label_field">Паспорт:</label>
-                    <div class="profile_input_field">
-                        {{sportman_form.passport}}
-                    </div>
-                </div>
-                
-                <div class="input_field button_profile">
-                    <input type="submit" value="Сохранить">
-                </div>
-            </form>
-        </div>
-        <div class="profile__photo">
-            {% if sportman.photo.url != 'Null'%}
-                <img src='{{MEDIA_URL}}{{sportman.photo.url}}' alt="">
-            {% else %}
-                <img src="/media/sportmen-images/no-photo.png" alt="">
-            {% endif %}
-        </div>
+    <!-- Sidebar профиля -->
+    <div class="profile__sidebar">
+        <a href="{% url 'sportman-profile' sportman.id %}">
+            <div class="profile__sidebarOption profile__sidebarOption_active">
+                <h3>Общая информация</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-anthropometry' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Антропометрия</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Медицинские показатели</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Нормативы</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-competitions' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>История соревнований</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Система питания</h3>
+            </div>
+        </a>
+        <a href="#">
+            <div class="profile__sidebarOption">
+                <h3>Травмы</h3>
+            </div>
+        </a>
     </div>
 </div>
 
-{% endblock profile_content %}
+{% endblock content %}
+

@@ -345,3 +345,170 @@ body{
 }
 
 /* ======================Create Popup Ends===================== */
+
+/* =========================Anthropometry Starts========================== */
+
+.anthropometry__content{
+    padding: 40px 80px;
+    margin: 0 auto;
+    display: block;
+}
+
+.anthropometry__options{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__row .material-symbols-outlined{
+    color: grey;
+}
+
+.anthropometry__options span:hover{
+    color:#71AAFF;
+}
+
+
+.anthropometry__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.anthropometry__left{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.anthropometry__row{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.anthropometry__row:hover{
+    border-top: 1px solid whitesmoke;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.anthropometry__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(123, 123, 123);
+    width: 100px;
+}
+
+.anthropometry__row h4{
+    width: 100px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+/* Шапка антропометрии  */
+
+.anthropometry__header__options{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__header .material-symbols-outlined{
+    color: rgb(0, 0, 0);
+}
+
+.anthropometry__header__options span:hover{
+    color:#71AAFF;
+}
+
+
+.anthropometry__header__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.anthropometry__header__left{
+    display: flex;
+    align-items: center;
+}
+
+.anthropometry__header__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.anthropometry__header{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: none;
+    background-color: #EAF1FB;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+    cursor: default;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.anthropometry__header:hover{
+    border-top: none;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.anthropometry__header__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(0, 0, 0);
+    width: 100px;
+}
+
+.anthropometry__header h4{
+    width: 100px;
+    padding: 0px 50px;
+    color: rgb(0, 0, 0);
+}
+
+/* =========================Anthropometry Ends========================== */
+
+/* =========================Competitions Starts========================== */
+
+.competition__content{
+    padding: 40px 0px;
+    margin: 0 auto;
+    display: block;
+}
+
+.competition__header h4{
+    width: 300px;
+}
+
+.competition__right h4{
+    width: 300px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+.competition__row{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+
+/* =========================Competitions Ends========================== */

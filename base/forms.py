@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Sportsman
+from .models import Sportsman, Anthropometry, Competitions
 from django.forms import TextInput
 
 class SportsmanForm(ModelForm):
@@ -15,4 +15,26 @@ class SportsmanForm(ModelForm):
             'phone_number': TextInput(attrs={'placeholder': 'Номер телефона'}),
             'address': TextInput(attrs={'placeholder': 'Адрес'}),
             'passport': TextInput(attrs={'placeholder': 'Серия и номер паспорта'})
+        }
+
+class AnthropometryForm(ModelForm):
+    class Meta:
+        model = Anthropometry
+        fields = ['height', 'weight', 'time']
+
+        widgets = {
+            'height': TextInput(attrs={'placeholder': 'Рост'}),
+            'weight': TextInput(attrs={'placeholder': 'Вес'}),
+            'time': TextInput(attrs={'placeholder': 'Дата замера'}),
+        }
+
+class CompetitionsForm(ModelForm):
+    class Meta:
+        model = Competitions
+        fields = ['name', 'result', 'time']
+
+        widgets = {
+            'name': TextInput(attrs={'placeholder': 'Название соревнования'}),
+            'result': TextInput(attrs={'placeholder': 'Результат'}),
+            'time': TextInput(attrs={'placeholder': 'Дата проведения'}),
         }

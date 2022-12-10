@@ -14,7 +14,8 @@ urlpatterns = [
 
     path('sportman-profile/<str:pk>/', views.sportmanProfile, name="sportman-profile"),
     path('edit-profile/<str:pk>/', views.sportmanProfile, name="edit-profile"),
-    path('sportman-profile/<str:pk>/anthropometry', views.sportmanAnthropometry, name="sportman-anthropometry"),
+    path('sportman-profile/anthropometry/<str:pk>', views.sportmanAnthropometry, name="sportman-anthropometry"),
+    path('sportman-profile/competitions/<str:pk>', views.sportmanCompetitions, name="sportman-competitions"),
 ]
 
 # Условие для отображения картинкок из бд на локальном сервере
