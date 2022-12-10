@@ -84,12 +84,17 @@
                 <h3>Антропометрия</h3>
             </div>
         </a>
+        <a href="{% url 'sportman-career' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Карьерная история</h3>
+            </div>
+        </a>
         <a href="#">
             <div class="profile__sidebarOption">
                 <h3>Медицинские показатели</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{% url 'sportman-indicators' sportman.id %}">
             <div class="profile__sidebarOption">
                 <h3>Нормативы</h3>
             </div>

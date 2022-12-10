@@ -10,11 +10,11 @@
         <div class="profile__inf">
             <div class="profile__inf__title">
                 <h3 class="profile__id">id: {{sportman.id}}</h3>
-                <h3 class="profile__title">Цифровой профиль: Антропометрия</h3>
+                <h3 class="profile__title">Цифровой профиль: Карьерная история</h3>
             </div>
-            <div class="anthropometry__content">
+            <div class="anthropometry__content career__content">
                 <!-- Шапка для добавления, обновления, ориентирования -->
-                <div class="anthropometry__row anthropometry__header">
+                <div class="anthropometry__row anthropometry__header career__header">
                     <div class="anthropometry__left anthropometry__header__left">
                         <!-- Функции записей антропометрии -->
                         <div class="anthropometry__options anthropometry__header__options">
@@ -23,7 +23,7 @@
                                     add_circle
                                 </span>
                             </a>
-                            <a href="{% url 'sportman-anthropometry' sportman.id %}">
+                            <a href="{% url 'sportman-competitions' sportman.id %}">
                                 <span class="material-symbols-outlined">
                                     sync
                                 </span>
@@ -32,19 +32,18 @@
                     </div>
 
                     <div class="sportmanRow__right anthropometry__header__right">
-                        <h4>Рост</h4>
-                        <h4>Вес</h4>
-                        <h4>Индекс</h4>
-                        <div class="anthropometry__time anthropometry__header__time">Дата измерения</div>
+                        <h4>Название команды</h4>
+                        <h4>Позиция на льду</h4>
+                        <div class="career__time career__header__time">Период работы в клубе</div>
                     </div>
                 </div>
 
                 <!-- Замеры антропометрических данных спортсмена -->
-                {% for anthropometry in anthropometries %}
-                <div class="anthropometry__row">
-                    <div class="anthropometry__left">
+                {% for career in career_history %}
+                <div class="anthropometry__row career__row">
+                    <div class="anthropometry__left competition__left">
                         <!-- Функции записей антропометрии -->
-                        <div class="anthropometry__options">
+                        <div class="anthropometry__options competition__options">
                             <a href="">
                                 <span class="material-symbols-outlined material-symbols-outlined__delete">
                                     delete
@@ -58,11 +57,10 @@
                         </div>
                     </div>
 
-                    <div class="sportmanRow__right">
-                        <h4>{{anthropometry.height}}см</h4>
-                        <h4>{{anthropometry.weight}}кг</h4>
-                        <h4>{{anthropometry.index}}</h4>
-                        <div class="anthropometry__time">{{anthropometry.time|date:'d.m.Y'}}</div>
+                    <div class="sportmanRow__right career__right">
+                        <h4>{{career.team_name}}</h4>
+                        <h4>{{career.position}}</h4>
+                        <div class="anthropometry__time career__time">{{career.start|date:'d.m.Y'}}-{{career.end|date:'d.m.Y'}}</div>
                     </div>
                 </div>
                 {% endfor %}
@@ -99,7 +97,7 @@
                 <h3>Нормативы</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{% url 'sportman-competitions' sportman.id %}">
             <div class="profile__sidebarOption">
                 <h3>История соревнований</h3>
             </div>
@@ -120,25 +118,29 @@
     <div class="popup" id="create_popup">
         <div class="popup__body">
             <div class="popup__content">
-                <a href="{% url 'sportman-anthropometry' sportman.id %}" class="popup__close close-popup">
+                <a href="{% url 'sportman-career' sportman.id %}" class="popup__close close-popup">
                     <span class="material-symbols-outlined">
                         close
                     </span>
                 </a>
-                <div class="popup__title">Добавить антропометрические замеры</div>
+                <div class="popup__title">Добавить карьерную историю</div>
                     <div class="form">
-                        <form action="{% url 'sportman-anthropometry' sportman.id %}" method="POST">
+                        <form action="{% url 'sportman-career' sportman.id %}" method="POST">
                             {% csrf_token %}
                             <div class="input_field">
-                                {{anthropometry_form.height}}
+                                {{career_form.team_name}}
                             </div>
 
                             <div class="input_field">
-                                {{anthropometry_form.weight}}
+                                {{career_form.position}}
                             </div>
 
                             <div class="input_field">
-                                {{anthropometry_form.time}}
+                                {{career_form.start}}
+                            </div>
+
+                            <div class="input_field">
+                                {{career_form.end}}
                             </div>
                             
                             <div class="input_field button">

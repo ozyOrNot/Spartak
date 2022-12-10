@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Sportsman, Anthropometry, Competitions
+from .models import Sportsman, Anthropometry, Competitions, Career, Indicators
 from django.forms import TextInput
 
 class SportsmanForm(ModelForm):
@@ -37,4 +37,26 @@ class CompetitionsForm(ModelForm):
             'name': TextInput(attrs={'placeholder': 'Название соревнования'}),
             'result': TextInput(attrs={'placeholder': 'Результат'}),
             'time': TextInput(attrs={'placeholder': 'Дата проведения'}),
+        }
+
+class CareerForm(ModelForm):
+    class Meta:
+        model = Career
+        fields = ['team_name', 'position', 'start', 'end']
+
+        widgets = {
+            'team_name': TextInput(attrs={'placeholder': 'Название команды'}),
+            'position': TextInput(attrs={'placeholder': 'Позиция на льду'}),
+            'start': TextInput(attrs={'placeholder': 'Начало работы в клубе'}),
+            'end': TextInput(attrs={'placeholder': 'Конец работы в клубе'}),
+        }
+
+class IndicatorsForm(ModelForm):
+    class Meta:
+        model = Indicators
+        fields = ['name', 'result', 'time']
+
+        widgets = {
+            'result': TextInput(attrs={'placeholder': 'Результат (мера измерения указана в названии норматива)'}),
+            'time': TextInput(attrs={'placeholder': 'Дата замера'}),
         }

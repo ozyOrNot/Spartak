@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from django.contrib.auth.models import User
-from .models import Sportsman, Anthropometry, Competitions
+from .models import Sportsman, Anthropometry, Competitions, Career, Indicators
 
-from .forms import SportsmanForm, AnthropometryForm, CompetitionsForm
+from .forms import SportsmanForm, AnthropometryForm, CompetitionsForm, CareerForm, IndicatorsForm
 
 @login_required(login_url='login_page')
 def home_page(request):
@@ -17,7 +17,8 @@ def home_page(request):
         Q(second_name__icontains=q) |
         Q(parent_name__icontains=q) |
         Q(birthday__icontains=q) |
-        Q(phone_number__icontains=q)
+        Q(phone_number__icontains=q) |
+        Q(id__icontains=q)
         )
 
     # Добавление спортсмена в бд
@@ -86,9 +87,12 @@ def sportmanAnthropometry(request, pk):
     anthropometry_form = AnthropometryForm()
     if request.method == 'POST':
         anthropometry_form = AnthropometryForm(request.POST)
+        height = request.POST.get("height")
+        weight = request.POST.get("weight")
         if anthropometry_form.is_valid():
             commit_form = anthropometry_form.save(commit=False)
             commit_form.sportman = sportman
+            commit_form.index = float(height) * float(weight)
             commit_form.save()
 
     context = {'sportman':sportman, 'anthropometries':anthropometries, 'anthropometry_form':anthropometry_form}
@@ -109,3 +113,35 @@ def sportmanCompetitions(request, pk):
 
     context = {'sportman':sportman, 'competitions':competitions, 'competition_form':competition_form}
     return render(request, 'profile_competition.html', context)
+
+def sportmanCareer(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    career_history = Career.objects.filter(sportman=sportman)
+
+    career_form = CareerForm()
+    if request.method == 'POST':
+        career_form = CareerForm(request.POST)
+        if career_form.is_valid():
+            form = career_form.save(commit=False)
+            form.sportman = sportman
+            form.save()
+            return redirect('sportman-career', str(sportman.id))
+
+    context = {'sportman':sportman, 'career_history':career_history, 'career_form':career_form}
+    return render(request, 'profile-career.html', context)
+
+def sportmanIndicators(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    indicators = Indicators.objects.filter(sportman=sportman)
+
+    indicators_form = IndicatorsForm()
+    if request.method == 'POST':
+        indicators_form = IndicatorsForm(request.POST)
+        if indicators_form.is_valid():
+            form = indicators_form.save(commit=False)
+            form.sportman = sportman
+            form.save()
+            return redirect('sportman-indicators', str(sportman.id))
+
+    context = {'sportman':sportman, 'indicators':indicators, 'indicators_form':indicators_form}
+    return render(request, 'profile-indicators.html', context)

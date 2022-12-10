@@ -510,5 +510,117 @@ body{
     cursor: pointer;
 }
 
-
 /* =========================Competitions Ends========================== */
+
+/* =========================Career Starts========================== */
+
+.career__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(123, 123, 123);
+    width: 200px;
+}
+
+.career__header__time{
+    color: rgb(0, 0, 0);
+}
+
+.career__content{
+    padding: 40px 40px;
+    margin: 0 auto;
+    display: block;
+}
+
+.career__header h4{
+    width: 200px;
+}
+
+.career__right h4{
+    width: 200px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+.career__row{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+/* =========================Career Ends========================== */
+
+/* =========================Indicators Starts========================== */
+
+.indicators__content{
+    padding: 40px 40px;
+    margin: 0 auto;
+    display: block;
+}
+
+.indicator__row{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.indicator__row:hover{
+    border-top: 1px solid whitesmoke;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.indicator__row h4{
+    width: 250px;
+    padding: 0px 50px;
+    color: rgb(123, 123, 123);
+}
+
+/* Шапка нормативов  */
+
+.indicators__header{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: none;
+    background-color: #EAF1FB;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+    cursor: default;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.indicators__header:hover{
+    border-top: none;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.indicators__header h4{
+    width: 250px;
+    padding: 0px 50px;
+    color: rgb(0, 0, 0);
+}
+
+.select_container select{
+    border: none;
+    appearance: none;
+    padding: 0 0px 0 0px;
+    width: 100%;
+    color: grey;
+    background-color: white;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    height: 50px;
+}
+
+/* =========================Indicators Ends========================== */
