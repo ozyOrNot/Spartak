@@ -624,3 +624,149 @@ body{
 }
 
 /* =========================Indicators Ends========================== */
+
+/* =========================Diet Starts========================== */
+
+.diet__inf{
+    max-height: 90%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.diet__content{
+    padding: 40px 20px;
+    display: block;
+}
+
+td textarea{
+    width: 200px;
+    height: 80px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: inherit;
+    font-size: 16px;
+    scrollbar-width: thin;
+    background-color: #EAF1FB;
+}
+
+td input{
+    width: 200px;
+    height: 80px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: inherit;
+    text-align: center;
+    font-size: 16px;
+    background-color: #EAF1FB;
+}
+
+.td_weekday{
+    padding: 0 30px;
+    text-align: center;
+    font-size: 18px;
+    background-color:#71AAFF;
+    color: #fff;
+    font-weight: 600;
+}
+
+.diet__content table thead{
+    background-color:#71AAFF;
+    color: #fff;
+    height: 40px;
+    font-size: 18px;
+}
+
+
+.diet__button{
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #71AAFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 150px;
+    padding: 15px 5px;
+    float: right;
+    margin-right: 32px;
+    margin-top: 20px;
+  }
+
+
+/* =========================Diet Ends========================== */
+
+/* =========================Medicine Starts========================== */
+
+.medicine__content{
+    padding: 40px 0px;
+    margin: 0 auto;
+    display: block;
+}
+
+.medicine__header{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: none;
+    background-color: #EAF1FB;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+    cursor: default;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.medicine__header__left{
+    display: flex;
+    align-items: center;
+}
+
+.medicine__header__right{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.medicine__header h4{
+    width: 100px;
+    padding: 0px 50px;
+    color: rgb(0, 0, 0);
+}
+
+.medicine__header__options{
+    display: flex;
+    align-items: center;
+}
+
+.medicine__header .material-symbols-outlined{
+    color: rgb(0, 0, 0);
+}
+
+.medicine__header__options span:hover{
+    color:#71AAFF;
+}
+
+.medicine__header__options .material-symbols-outlined{
+    margin: 7px;
+}
+
+.medicine__header:hover{
+    border-top: none;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+.medicine__header__time{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    color: rgb(0, 0, 0);
+    width: 100px;
+}
+
+/* =========================Medicine Ends========================== */

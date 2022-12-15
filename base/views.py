@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from django.contrib.auth.models import User
-from .models import Sportsman, Anthropometry, Competitions, Career, Indicators
+from .models import Sportsman, Anthropometry, Competitions, Career, Indicators, Medicine, Product, Diet, Trauma
 
-from .forms import SportsmanForm, AnthropometryForm, CompetitionsForm, CareerForm, IndicatorsForm
+from .forms import SportsmanForm, AnthropometryForm, CompetitionsForm, CareerForm, IndicatorsForm, MedicineForm, DietForm, TraumaForm
 
 @login_required(login_url='login_page')
 def home_page(request):
@@ -31,6 +31,10 @@ def home_page(request):
 
     context = {'sportmans':sportmans, 'sportman_form':sportman_form}
     return render(request, 'home.html', context)
+
+def compare_page(request):
+    context = {}
+    return render(request, 'compare.html', context)
 
 def delete_profile(request, pk):
     sportman = Sportsman.objects.get(id=pk)
@@ -145,3 +149,97 @@ def sportmanIndicators(request, pk):
 
     context = {'sportman':sportman, 'indicators':indicators, 'indicators_form':indicators_form}
     return render(request, 'profile-indicators.html', context)
+
+def sportmanMedicine(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    medicine_tests = Medicine.objects.filter(sportman=sportman)
+
+    medicine_form = MedicineForm()
+    if request.method == 'POST':
+        medicine_form = MedicineForm(request.POST, request.FILES)
+        if medicine_form.is_valid():
+            form = medicine_form.save(commit=False)
+            form.sportman = sportman
+            form.save()
+            return redirect('sportman-medicine', str(sportman.id))
+
+    context = {'sportman':sportman, 'medicine_tests':medicine_tests, 'medicine_form':medicine_form}
+    return render(request, 'profile_medicine.html', context)
+
+def sportmanDiet(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+
+    try:
+        diet = Diet.objects.get(sportman=sportman)
+        diet_form = DietForm(instance=diet)
+
+        if request.method == 'POST':
+            diet.monday_breakfast = request.POST.get('monday_breakfast')
+            diet.monday_lunch = request.POST.get('monday_lunch')
+            diet.monday_dinner = request.POST.get('monday_dinner')
+            diet.monday_calories = request.POST.get('monday_calories')
+
+            diet.tuesday_breakfast = request.POST.get('tuesday_breakfast')
+            diet.tuesday_lunch = request.POST.get('tuesday_lunch')
+            diet.tuesday_dinner = request.POST.get('tuesday_dinner')
+            diet.tuesday_calories = request.POST.get('tuesday_calories')
+
+            diet.wednesday_breakfast = request.POST.get('wednesday_breakfast')
+            diet.wednesday_lunch = request.POST.get('wednesday_lunch')
+            diet.wednesday_dinner = request.POST.get('wednesday_dinner')
+            diet.wednesday_calories = request.POST.get('wednesday_calories')
+
+            diet.thursday_breakfast = request.POST.get('thursday_breakfast')
+            diet.thursday_lunch = request.POST.get('thursday_lunch')
+            diet.thursday_dinner = request.POST.get('thursday_dinner')
+            diet.thursday_calories = request.POST.get('thursday_calories')
+
+            diet.friday_breakfast = request.POST.get('friday_breakfast')
+            diet.friday_lunch = request.POST.get('friday_lunch')
+            diet.friday_dinner = request.POST.get('friday_dinner')
+            diet.friday_calories = request.POST.get('friday_calories')
+
+            diet.saturday_breakfast = request.POST.get('saturday_breakfast')
+            diet.saturday_lunch = request.POST.get('saturday_lunch')
+            diet.saturday_dinner = request.POST.get('saturday_dinner')
+            diet.saturday_calories = request.POST.get('saturday_calories')
+
+            diet.sunday_breakfast = request.POST.get('sunday_breakfast')
+            diet.sunday_lunch = request.POST.get('sunday_lunch')
+            diet.sunday_dinner = request.POST.get('sunday_dinner')
+            diet.sunday_calories = request.POST.get('sunday_calories')
+
+            diet.save()
+            return redirect('sportman-diet', str(sportman.id))
+
+        context = {'sportman':sportman, 'diet':diet, 'diet_form':diet_form}
+        return render(request, 'profile-diet.html', context)
+    except:
+        diet_form = DietForm()
+
+    if request.method == 'POST':
+        diet_form = DietForm(request.POST)
+        if diet_form.is_valid():
+            form = diet_form.save(commit=False)
+            form.sportman = sportman
+            form.save()
+            return redirect('sportman-diet', str(sportman.id))
+            
+        context = {'sportman':sportman, 'diet_form':diet_form}
+        return render(request, 'profile-diet.html', context)
+
+def sportmanTrauma(request, pk):
+    sportman = Sportsman.objects.get(id=pk)
+    traumas = Trauma.objects.filter(sportman=sportman)
+
+    trauma_form = TraumaForm()
+    if request.method == 'POST':
+        trauma_form = TraumaForm(request.POST, request.FILES)
+        if trauma_form.is_valid():
+            form = trauma_form.save(commit=False)
+            form.sportman = sportman
+            form.save()
+            return redirect('sportman-traumas', str(sportman.id))
+    
+    context = {'sportman':sportman, 'traumas':traumas, 'trauma_form':trauma_form}
+    return render(request, 'profile-trauma.html', context)

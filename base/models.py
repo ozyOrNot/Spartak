@@ -68,3 +68,75 @@ class Indicators(models.Model):
 
     def __str__(self):
         return f'Indicator: {self.sportman.name} {self.sportman.second_name} {self.sportman.parent_name} | {self.name}'
+
+class Medicine(models.Model):
+    sportman = models.ForeignKey(Sportsman, on_delete=models.SET_NULL, null=True)
+    bpm = models.IntegerField(blank=True, null=True)
+    arterial_pressure = models.CharField(max_length=7, blank=True, null=True)
+    medical_tests = models.FileField(blank=True, null=True)
+    medical_survey = models.FileField(blank=True, null=True)
+    time = models.DateField()
+
+    def __str__(self):
+        return f'Indicator: {self.sportman.name} {self.sportman.second_name} {self.sportman.parent_name} | {self.time}'
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    proteins = models.FloatField(max_length=10)
+    fats = models.FloatField(max_length=10)
+    carbo = models.FloatField(max_length=10)
+    calories = models.FloatField(max_length=10)
+
+    def __str__(self):
+        return f'{self.name} | {self.calories}'
+
+
+class Diet(models.Model):
+    sportman = models.ForeignKey(Sportsman, on_delete=models.SET_NULL, null=True)
+    monday_breakfast = models.TextField(null=True, blank=True)
+    monday_lunch = models.TextField(null=True, blank=True)
+    monday_dinner = models.TextField(null=True, blank=True)
+    monday_calories = models.CharField(max_length=100, null=True, blank=True)
+    
+    tuesday_breakfast = models.TextField(null=True, blank=True)
+    tuesday_lunch = models.TextField(null=True, blank=True)
+    tuesday_dinner = models.TextField(null=True, blank=True)
+    tuesday_calories = models.CharField(max_length=100, null=True, blank=True)
+
+    wednesday_breakfast = models.TextField(null=True, blank=True)
+    wednesday_lunch = models.TextField(null=True, blank=True)
+    wednesday_dinner = models.TextField(null=True, blank=True)
+    wednesday_calories = models.CharField(max_length=100, null=True, blank=True)
+    
+    thursday_breakfast = models.TextField(null=True, blank=True)
+    thursday_lunch = models.TextField(null=True, blank=True)
+    thursday_dinner = models.TextField(null=True, blank=True)
+    thursday_calories = models.CharField(max_length=100, null=True, blank=True)
+
+    friday_breakfast = models.TextField(null=True, blank=True)
+    friday_lunch = models.TextField(null=True, blank=True)
+    friday_dinner = models.TextField(null=True, blank=True)
+    friday_calories = models.CharField(max_length=100, null=True, blank=True)
+
+    saturday_breakfast = models.TextField(null=True, blank=True)
+    saturday_lunch = models.TextField(null=True, blank=True)
+    saturday_dinner = models.TextField(null=True, blank=True)
+    saturday_calories = models.CharField(max_length=100, null=True, blank=True)
+    
+    sunday_breakfast = models.TextField(null=True, blank=True)
+    sunday_lunch = models.TextField(null=True, blank=True)
+    sunday_dinner = models.TextField(null=True, blank=True)
+    sunday_calories = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.sportman.name}'
+
+class Trauma(models.Model):
+    sportman = models.ForeignKey(Sportsman, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=200)
+    file = models.FileField(blank=True, null=True)
+    start = models.DateField()
+    end = models.DateField()
+
+    def __str__(self):
+        return f'{self.name} | {self.start} - {self.end}'

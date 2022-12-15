@@ -109,7 +109,7 @@
                 <h3>Карьерная история</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{% url 'sportman-medicine' sportman.id %}">
             <div class="profile__sidebarOption">
                 <h3>Медицинские показатели</h3>
             </div>
@@ -124,12 +124,12 @@
                 <h3>История соревнований</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{% url 'sportman-diet' sportman.id %}">
             <div class="profile__sidebarOption">
                 <h3>Система питания</h3>
             </div>
         </a>
-        <a href="#">
+        <a href="{% url 'sportman-traumas' sportman.id %}">
             <div class="profile__sidebarOption">
                 <h3>Травмы</h3>
             </div>

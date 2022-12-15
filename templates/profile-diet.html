@@ -1,0 +1,166 @@
+{% extends 'main_profile.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="sportmanList profileBody dietBody">
+
+    <!-- Контент профиля -->
+    <div class="profile__content">
+        <div class="profile__inf diet__inf">
+            <div class="profile__inf__title">
+                <h3 class="profile__id">id: {{sportman.id}}</h3>
+                <h3 class="profile__title">Цифровой профиль: Система питания</h3>
+            </div>
+            <div class="anthropometry__content diet__content">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="td_weekday">День недели</th>
+                                <th>Завтрак</th>
+                                <th>Обед</th>
+                                <th>Ужин</th>
+                                <th>Калории</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="td_weekday">Понедельник</td>
+                            <td>{{diet_form.monday_breakfast}}</td>
+                            <td>{{diet_form.monday_lunch}}</td>
+                            <td>{{diet_form.monday_dinner}}</td>
+                            <td>{{diet_form.monday_calories}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td_weekday">Вторник</td>
+                            <td>{{diet_form.tuesday_breakfast}}</td>
+                            <td>{{diet_form.tuesday_lunch}}</td>
+                            <td>{{diet_form.tuesday_dinner}}</td>
+                            <td>{{diet_form.tuesday_calories}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td_weekday">Среда</td>
+                            <td>{{diet_form.wednesday_breakfast}}</td>
+                            <td>{{diet_form.wednesday_lunch}}</td>
+                            <td>{{diet_form.wednesday_dinner}}</td>
+                            <td>{{diet_form.wednesday_calories}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td_weekday">Четверг</td>
+                            <td>{{diet_form.thursday_breakfast}}</td>
+                            <td>{{diet_form.thursday_lunch}}</td>
+                            <td>{{diet_form.thursday_dinner}}</td>
+                            <td>{{diet_form.thursday_calories}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td_weekday">Пятница</td>
+                            <td>{{diet_form.friday_breakfast}}</td>
+                            <td>{{diet_form.friday_lunch}}</td>
+                            <td>{{diet_form.friday_dinner}}</td>
+                            <td>{{diet_form.friday_calories}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td_weekday">Суббота</td>
+                            <td>{{diet_form.saturday_breakfast}}</td>
+                            <td>{{diet_form.saturday_lunch}}</td>
+                            <td>{{diet_form.saturday_dinner}}</td>
+                            <td>{{diet_form.saturday_calories}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td_weekday">Воскресенье</td>
+                            <td>{{diet_form.sunday_breakfast}}</td>
+                            <td>{{diet_form.sunday_lunch}}</td>
+                            <td>{{diet_form.sunday_dinner}}</td>
+                            <td>{{diet_form.sunday_calories}}</td>
+                        </tr>
+                    </table>
+                    <input class="diet__button" type="submit" value="Сохранить">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Sidebar профиля -->
+    <div class="profile__sidebar">
+        <a href="{% url 'sportman-profile' sportman.id %}">
+            <div class="profile__sidebarOption profile__sidebarOption_active">
+                <h3>Общая информация</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-anthropometry' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Антропометрия</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-career' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Карьерная история</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-medicine' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Медицинские показатели</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-indicators' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Нормативы</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-competitions' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>История соревнований</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-diet' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Система питания</h3>
+            </div>
+        </a>
+        <a href="{% url 'sportman-traumas' sportman.id %}">
+            <div class="profile__sidebarOption">
+                <h3>Травмы</h3>
+            </div>
+        </a>
+    </div>
+
+    <!-- Pop-up Create a digital profile Starts -->
+    <div class="popup" id="create_popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="{% url 'sportman-indicators' sportman.id %}" class="popup__close close-popup">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </a>
+                <div class="popup__title">Добавить норматив</div>
+                    <div class="form">
+                        <form action="{% url 'sportman-indicators' sportman.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="input_field select_container">
+                                {{indicators_form.name}}
+                            </div>
+
+                            <div class="input_field">
+                                {{indicators_form.result}}
+                            </div>
+
+                            <div class="input_field">
+                                {{indicators_form.time}}
+                            </div>
+                            
+                            <div class="input_field button">
+                                <input type="submit" value="Добавить">
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pop-up Create a digital profile Ends -->
+</div>
+
+{% endblock content %}
