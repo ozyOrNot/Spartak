@@ -4,19 +4,173 @@
 {% block content %}
 
 <div class="compare__content">
-    <!-- Левый спортсмен для сравнения -->
+    
     <div class="compare__header">
         <div class="compare__title">
-            <h1>Сравнить спортсменов</h1>
+            <h2>Сравнить спортсменов</h2>
+        </div>
+        <div class="compare__submit-form">
+            <form action="{% url 'compare_page' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-compare">
+                    <div class="input-text">
+                        <input type="text" name="left-sportman">
+                    </div>
+
+                    <div class="input-button">
+                        <input type="submit" value="Сравнить">
+                    </div>
+
+                    <div class="input-text">
+                        <input type="text" name="right-sportman">
+                    </div>
+                </div>
+            </form> 
         </div>
     </div>
-    <div class="compare__left  left-sportman">
-        <div class="left-sportman__header"></div>
+    <!-- Блок со спортсменами -->
+    {% if left_sportman is not None and right_sportman is not None %}
+    <div class="compare__sportmans">
+
+
+
+
+        <!-- Левый спортсмен для сравнения -->
+        <div class="compare__left  left-sportman">
+            <div class="left-sportman__header">
+                <a href="{% url 'sportman-profile' left_sportman.id %}">
+                    <h2 class="left-sportman__name">{{left_sportman.name}} {{left_sportman.second_name}} {{left_sportman.parent_name}}</h2>
+                </a>
+            </div>
+
+            <div class="left-sportman__body">
+                <!-- Антропометрия -->
+                <div class="left-sportman__anthropometry">
+                    <div class="left-sportman__anthropometry__title">
+                        <h3>Антропометрия</h3>
+                    </div>
+                    <div class="anthropometry__row anthropometry__header">
+                        <div class="sportmanRow__right anthropometry__header__right">
+                            <h4>Рост</h4>
+                            <h4>Вес</h4>
+                            <div class="anthropometry__time anthropometry__header__time__compare">Дата измерения</div>
+                        </div>
+                    </div>
+                    {% for anthropometry in left_sportman_anthropometry %}
+                    <div class="anthropometry__row">
+                        <div class="sportmanRow__right">
+                            <h4>{{anthropometry.height}}см</h4>
+                            <h4>{{anthropometry.weight}}кг</h4>
+                            <div class="anthropometry__time__compare">{{anthropometry.time|date:'d.m.Y'}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Карьерная история -->
+                <div class="left-sportman__career">
+                    <div class="left-sportman__career__title">
+                        <h3>Карьерная история</h3>
+                    </div>
+                    {% for career in left_sportman_career %}
+                        <div class="career__body">
+                            <hr>
+                            <div>Название команды: {{career.team_name}}</div>
+                            <div>Позиция на льду: {{career.position}}</div>
+                            <div>Срок работы в клубе: {{career.start|date:'d.m.Y'}}-{{career.end|date:'d.m.Y'}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Нормативы -->
+                <div class="left-sportman__career">
+                    <div class="left-sportman__career__title">
+                        <h3>Нормативы</h3>
+                    </div>
+                    {% for indicator in left_sportman_indicators %}
+                        <div class="career__body">
+                            <hr>
+                            <div>Норматив: {{indicator.name}}</div>
+                            <div>Результат: {{indicator.resault}}</div>
+                            <div>Дата замера: {{indicator.time|date:'d.m.Y'}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+        <!-- Правый спортсмен для сравнения -->
+        <div class="compare__right right-sportman">
+            <div class="right-sportman__header">
+                <a href="{% url 'sportman-profile' right_sportman.id %}">
+                    <h2 class="right-sportman__name">{{right_sportman.name}} {{right_sportman.second_name}} {{right_sportman.parent_name}}</h2>
+                </a>
+            </div>
+
+            <div class="right-sportman__body">
+                <div class="right-sportman__anthropometry">
+                    <div class="right-sportman__anthropometry__title">
+                        <h3>Антропометрия</h3>
+                    </div>
+                    <div class="anthropometry__row anthropometry__header">
+                        <div class="sportmanRow__right anthropometry__header__right">
+                            <h4>Рост</h4>
+                            <h4>Вес</h4>
+                            <div class="anthropometry__time anthropometry__header__time__compare">Дата измерения</div>
+                        </div>
+                    </div>
+                    {% for anthropometry in right_sportman_anthropometry %}
+                        <div class="anthropometry__row">
+                            <div class="sportmanRow__right">
+                                <h4>{{anthropometry.height}}см</h4>
+                                <h4>{{anthropometry.weight}}кг</h4>
+                                <div class="anthropometry__time__compare">{{anthropometry.time|date:'d.m.Y'}}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Карьерная история -->
+                <div class="left-sportman__career">
+                    <div class="left-sportman__career__title">
+                        <h3>Карьерная история</h3>
+                    </div>
+                    {% for career in right_sportman_career %}
+                        <div class="career__body">
+                            <hr>
+                            <div>Название команды: {{career.team_name}}</div>
+                            <div>Позиция на льду: {{career.position}}</div>
+                            <div>Срок работы в клубе: {{career.start|date:'d.m.Y'}}-{{career.end|date:'d.m.Y'}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Нормативы -->
+                <div class="left-sportman__career">
+                    <div class="left-sportman__career__title">
+                        <h3>Нормативы</h3>
+                    </div>
+                    {% for indicator in right_sportman_indicators %}
+                        <div class="career__body">
+                            <hr>
+                            <div>Норматив: {{indicator.name}}</div>
+                            <div>Результат: {{indicator.resault}}</div>
+                            <div>Дата замера: {{indicator.time|date:'d.m.Y'}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
-    <!-- Правый спортсмен для сравнения -->
-    <div class="compare__right right-sportman">
-        <div class="right-sportman__header"></div>
-    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

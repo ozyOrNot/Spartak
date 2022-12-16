@@ -770,3 +770,150 @@ td input{
 }
 
 /* =========================Medicine Ends========================== */
+
+/* ===========================Compare Starts==================================== */
+
+.compare__content{
+    flex: 1;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 30px;
+    margin-right: 35px;
+}
+
+.compare__title{
+    text-align: center;
+}
+
+.compare__submit-form{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.compare__sportmans{
+    display: flex;
+    margin-top: 25px;
+}
+
+.left-sportman{
+    flex: 0.5;
+    max-height: 710px;
+    overflow-y: auto;
+    scrollbar-width:thin;
+    border-right: 0.5px solid #4070f4;
+    padding-right: 25px;
+}
+
+.left-sportman__header{
+    text-align: center;
+}
+
+.right-sportman{
+    flex: 0.5;
+    max-height: 710px;
+    overflow-y: auto;
+    scrollbar-width:thin;
+    border-left: 0.5px solid #4070f4;
+    padding-left: 25px;
+}
+
+.right-sportman__header{
+    text-align: center;
+}
+
+.right-sportman__body{
+    margin-top: 20px;
+}
+
+.left-sportman__body{
+    margin-top: 20px;
+}
+
+.left-sportman__anthropometry__title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.right-sportman__anthropometry__title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.anthropometry__time__compare{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 150px;
+    color: rgb(123, 123, 123);
+    width: 100px;
+}
+
+.anthropometry__header__time__compare{
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    padding-left: 150px;
+    color: rgb(0, 0, 0);
+    width: 100px;
+}
+
+.left-sportman__career__title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.career__body{
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: #EAF1FB;
+}
+
+.career__body hr{
+    color: #4070f4;
+}
+
+.career__body div{
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.career__body div:last-child{
+    padding-bottom: 10px;
+}
+
+.form-compare{
+    display: flex;
+    justify-content: center;
+}
+
+.input-text{
+    background-color: #EAF1FB;
+}
+
+.input-text input{
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    width: 150px;
+}
+
+.input-button input{
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #71AAFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 30px;
+}
+
+/* ===========================Compare Ends==================================== */
+

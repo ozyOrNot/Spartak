@@ -32,10 +32,6 @@ def home_page(request):
     context = {'sportmans':sportmans, 'sportman_form':sportman_form}
     return render(request, 'home.html', context)
 
-def compare_page(request):
-    context = {}
-    return render(request, 'compare.html', context)
-
 def delete_profile(request, pk):
     sportman = Sportsman.objects.get(id=pk)
     sportman.delete()
@@ -224,7 +220,7 @@ def sportmanDiet(request, pk):
             form.sportman = sportman
             form.save()
             return redirect('sportman-diet', str(sportman.id))
-            
+
         context = {'sportman':sportman, 'diet_form':diet_form}
         return render(request, 'profile-diet.html', context)
 
@@ -243,3 +239,37 @@ def sportmanTrauma(request, pk):
     
     context = {'sportman':sportman, 'traumas':traumas, 'trauma_form':trauma_form}
     return render(request, 'profile-trauma.html', context)
+
+def compare_page(request):
+    left_sportman = None
+    right_sportman = None
+    left_sportman_anthropometry = None
+    right_sportman_anthropometry = None
+    left_sportman_career = None
+    right_sportman_career = None
+    left_sportman_indicators = None
+    right_sportman_indicators = None
+
+    if  request.method == 'POST':
+        first_sportman = request.POST.get("left-sportman")
+        second_sportman = request.POST.get("right-sportman")
+
+        left_sportman = Sportsman.objects.get(id=first_sportman)
+        right_sportman = Sportsman.objects.get(id=second_sportman)
+
+        left_sportman_anthropometry = Anthropometry.objects.filter(sportman=left_sportman)
+        right_sportman_anthropometry = Anthropometry.objects.filter(sportman=right_sportman)
+
+        left_sportman_career = Career.objects.filter(sportman=left_sportman)
+        right_sportman_career = Career.objects.filter(sportman=right_sportman)
+
+        left_sportman_indicators = Indicators.objects.filter(sportman=left_sportman)
+        right_sportman_indicators = Indicators.objects.filter(sportman=right_sportman)
+
+    context = {
+        'left_sportman':left_sportman, 'right_sportman':right_sportman, 
+        'left_sportman_anthropometry':left_sportman_anthropometry, 'right_sportman_anthropometry':right_sportman_anthropometry,
+        'left_sportman_career':left_sportman_career, 'right_sportman_career':right_sportman_career,
+        'left_sportman_indicators':left_sportman_indicators, 'right_sportman_indicators':right_sportman_indicators,
+        }
+    return render(request, 'compare.html', context)
