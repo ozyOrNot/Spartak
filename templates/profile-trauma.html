@@ -34,7 +34,7 @@
                     <div class="sportmanRow__right anthropometry__header__right">
                         <h4>Название травмы</h4>
                         <h4>Справка о полученной травме</h4>
-                        <div class="anthropometry__time anthropometry__header__time">Срок восстановления</div>
+                        <div class="anthropometry__time anthropometry__header__time medicine__header__time">Срок восстановления</div>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                     <div class="sportmanRow__right">
                         <h4>{{trauma.name}}</h4>
                         <h4>{{trauma.file}}</h4>
-                        <div class="anthropometry__time">{{trauma.start|date:'d.m.Y'}}-{{trauma.end|date:'d.m.Y'}}</div>
+                        <div class="anthropometry__time trauma__time">{{trauma.start|date:'d.m.Y'}}-{{trauma.end|date:'d.m.Y'}}</div>
                     </div>
                 </div>
                 {% endfor %}
@@ -73,7 +73,7 @@
     <!-- Sidebar профиля -->
     <div class="profile__sidebar">
         <a href="{% url 'sportman-profile' sportman.id %}">
-            <div class="profile__sidebarOption profile__sidebarOption_active">
+            <div class="profile__sidebarOption">
                 <h3>Общая информация</h3>
             </div>
         </a>
@@ -108,7 +108,7 @@
             </div>
         </a>
         <a href="{% url 'sportman-traumas' sportman.id %}">
-            <div class="profile__sidebarOption">
+            <div class="profile__sidebarOption profile__sidebarOption_active">
                 <h3>Травмы</h3>
             </div>
         </a>

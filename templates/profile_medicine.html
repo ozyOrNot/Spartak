@@ -62,7 +62,7 @@
                         <h4>{{medicine_test.bpm}}</h4>
                         <h4>{{medicine_test.arterial_pressure}}</h4>
                         <h4>{{medicine_test.medical_tests}}</h4>
-                        <div class="anthropometry__time">{{medicine_test.time|date:'d.m.Y'}}</div>
+                        <div class="anthropometry__time medicine__time">{{medicine_test.time|date:'d.m.Y'}}</div>
                     </div>
                 </div>
                 {% endfor %}
@@ -74,7 +74,7 @@
     <!-- Sidebar профиля -->
     <div class="profile__sidebar">
         <a href="{% url 'sportman-profile' sportman.id %}">
-            <div class="profile__sidebarOption profile__sidebarOption_active">
+            <div class="profile__sidebarOption">
                 <h3>Общая информация</h3>
             </div>
         </a>
@@ -89,7 +89,7 @@
             </div>
         </a>
         <a href="{% url 'sportman-medicine' sportman.id %}">
-            <div class="profile__sidebarOption">
+            <div class="profile__sidebarOption profile__sidebarOption_active">
                 <h3>Медицинские показатели</h3>
             </div>
         </a>
